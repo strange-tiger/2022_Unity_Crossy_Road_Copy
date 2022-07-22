@@ -2,12 +2,9 @@
 
 ## 게임 개요
 
-1. 게임명 : [점프 킹 (Jump King)](https://store.steampowered.com/app/1061090/Jump_King/?l=koreana) 모작
+1. [Getting Over It with Bennett Foddy (통칭 항아리 게임)](https://store.steampowered.com/app/240720/Getting_Over_It_with_Bennett_Foddy/?l=koreana&curator_clanid=27540586) 모작
 
-2. 장르 : 플랫포머
-
-3. 게임 방법 : 키보드의 스페이스 바와 방향키로 점프를 하여 목적지까지 올라가는 게임.\
-스페이스 바를 길게 눌러 점프의 세기를 정하고 방향키로 점프 방향을 정한다. 
+2. [Lobotomy Corporation | Monster Management Simulation (로보토미 코퍼레이션)](https://store.steampowered.com/app/568220/Lobotomy_Corporation__Monster_Management_Simulation/?l=koreana) 모작
 
 ## 개발 환경
 프로젝트가 완료된 후 개발 환경을 작성합니다. 기간 / 인원 / 사용한 툴 / 외부 패키지, 라이브러리 등을 작성합니다.
