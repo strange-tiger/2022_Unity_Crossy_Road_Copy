@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class LogSpawner : MonoBehaviour, ISpawner
 {
-    public GameObject LogPrefab;
-    public float SpawnCooltime = 2f;
+    public GameObject[] LogPrefab = new GameObject[3];
+    public float MinSpawnCooltime = 1f;
+    public float MaxSpawnCooltime = 3f;
 
-    private void Start()
+    private GameObject _logPrefab;
+    private float _spawnCooltime;
+    private void Awake()
     {
+        _spawnCooltime = Random.Range(MinSpawnCooltime, MaxSpawnCooltime);
+        _logPrefab = LogPrefab[Random.Range(0, 3)];
         StartCoroutine(Spawn());
     }
 
@@ -16,9 +21,10 @@ public class LogSpawner : MonoBehaviour, ISpawner
     {
         while (true)
         {
-            GameObject vehicle = Instantiate(LogPrefab, gameObject.transform.position, gameObject.transform.rotation);
-
-            yield return new WaitForSeconds(SpawnCooltime);
+            GameObject log = Instantiate(_logPrefab, gameObject.transform.position, gameObject.transform.rotation);
+            log.transform.SetParent(transform);
+            
+            yield return new WaitForSeconds(_spawnCooltime);
         }
     }
 }

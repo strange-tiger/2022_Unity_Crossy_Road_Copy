@@ -6,7 +6,7 @@ public class Log : MonoBehaviour
 {
     public float Speed = 10f;
     public float MaintenanceTime;
-
+    
     void Start()
     {
         MaintenanceTime = 50f / Speed;

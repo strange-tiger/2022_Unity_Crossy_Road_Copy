@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class VehicleSpawner : MonoBehaviour, ISpawner
 {
-    public GameObject VehiclePrefab;
-    public float SpawnCooltime = 2f;
+    public GameObject[] VehiclePrefab = new GameObject[4];
+    public float MinSpawnCooltime = 1.5f;
+    public float MaxSpawnCooltime = 5f;
 
-    private void Start()
+    private GameObject _vehiclePrefab; 
+    private float _spawnCooltime;
+    private void Awake()
     {
+        _spawnCooltime = Random.Range(MinSpawnCooltime, MaxSpawnCooltime);
+        _vehiclePrefab = VehiclePrefab[Random.Range(0, 4)];
         StartCoroutine(Spawn());
     }
 
@@ -16,9 +21,10 @@ public class VehicleSpawner : MonoBehaviour, ISpawner
     {
         while (true)
         {
-            GameObject vehicle = Instantiate(VehiclePrefab, gameObject.transform.position, gameObject.transform.rotation);
+            GameObject vehicle = Instantiate(_vehiclePrefab, gameObject.transform.position, gameObject.transform.rotation);
+            vehicle.transform.SetParent(transform);
             
-            yield return new WaitForSeconds(SpawnCooltime);
+            yield return new WaitForSeconds(_spawnCooltime);
         }
     }
 }

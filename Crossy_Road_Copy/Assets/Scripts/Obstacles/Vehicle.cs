@@ -6,10 +6,10 @@ public class Vehicle : MonoBehaviour
 {
     public float Speed = 10f;
     public float MaintenanceTime;
-
+    
     void Start()
     {
-        MaintenanceTime = 50f / Speed;
+        MaintenanceTime = 120f / Speed;
         Destroy(gameObject, MaintenanceTime);
     }
 
