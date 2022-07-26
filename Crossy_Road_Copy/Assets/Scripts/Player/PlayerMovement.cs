@@ -4,58 +4,58 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float Speed = 1f;
+    public float Speed = 1.5f;
 
     public Log log { get; private set; }
 
     private Transform _logCompareTransform;
     private PlayerInput _input;
-    private Vector3 _logOffsetPosition;
+    private Rigidbody _rigidboby;
     private Vector3 _newPosition = new Vector3(0f, 0.5f, 0f);
     private void Awake()
     {
         _input = GetComponent<PlayerInput>();
+        _rigidboby = GetComponent<Rigidbody>();
+    }
+
+    private float _logSpeed = 10f;
+    private bool _onLog = false;
+    private void FixedUpdate()
+    {
+        if (_onLog)
+        {
+            _newPosition += new Vector3(_logSpeed * Time.fixedDeltaTime, 0.5f, 0f);
+        }
     }
 
     private void Update()
     {
-        float VerticalVector = Speed * _input.VerticalMove;
-        float HorizontalVector = Speed * _input.HorizontalMove;
-
-        if (log != null)
+        float VerticalMovement = Speed * _input.VerticalMove;
+        float HorizontalMovement = Speed * _input.HorizontalMove;
+        if (VerticalMovement != 0f || HorizontalMovement != 0f)
         {
-            _newPosition = log.transform.position;
-        }
-        
-        _newPosition.x += HorizontalVector;
-        _newPosition.z += VerticalVector;
-        transform.position = _newPosition;
+            _newPosition.x += HorizontalMovement;
+            _newPosition.z += VerticalMovement;
 
-        if (VerticalVector != 0f || HorizontalVector != 0f)
-        {
-            transform.LookAt(transform.position + new Vector3(HorizontalVector, 0, VerticalVector));
+            transform.LookAt(transform.position + new Vector3(HorizontalMovement, 0, VerticalMovement));
         }
+        _rigidboby.MovePosition(_newPosition);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Log")
         {
-            log = other.GetComponent<Log>();
-
-            _logCompareTransform = log.transform;
-            _logOffsetPosition = transform.position - log.transform.position;
-            return;
+            // Debug.Log(other.name);
+            _onLog = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Log" && _logCompareTransform == other.transform)
+        if (other.tag == "Log")
         {
-            log = null;
-            _logCompareTransform = null;
-            _logOffsetPosition = Vector3.zero;
+            _onLog = false;
         }
     }
 }
