@@ -18,7 +18,7 @@ public class ScoreText : MonoBehaviour
 
     private void Update()
     {
-        float currentPosition = playerMovement.transform.position.z / playerMovement.Speed;
+        float currentPosition = playerMovement.transform.position.z / playerMovement.MoveDistance;
           if(score + 1 <= currentPosition)
           {
             score = (int)currentPosition;
