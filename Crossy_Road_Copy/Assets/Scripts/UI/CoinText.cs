@@ -5,32 +5,16 @@ using TMPro;
 
 public class CoinText : MonoBehaviour
 {
-    public bool isOn { get; set; }
-    public int coin { get; private set; }
+    public PlayerMovement player;
 
     private TextMeshProUGUI _ui;
     private void Awake()
     {
         _ui = GetComponent<TextMeshProUGUI>();
-        coin = PlayerPrefs.GetInt("Coin", 0);
-        isOn = true;
     }
 
     private void Update()
     {
-        if (isOn)
-        {
-            _ui.text = $"{coin}";
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Coin")
-        {
-            ++coin;
-            // other.gameObject.SetActive(false);
-            Destroy(other.gameObject);
-        }
+       _ui.text = $"{player.coin}";
     }
 }

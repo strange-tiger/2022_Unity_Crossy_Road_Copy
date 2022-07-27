@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float Speed = 1.5f;
-
+    
     public Log log { get; private set; }
+    public int coin { get; private set; }
 
     private Transform _logCompareTransform;
     private PlayerInput _input;
@@ -16,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _input = GetComponent<PlayerInput>();
         _rigidboby = GetComponent<Rigidbody>();
+        coin = PlayerPrefs.GetInt("Coin", 0);
     }
 
     private float _logSpeed = 10f;
@@ -48,6 +51,13 @@ public class PlayerMovement : MonoBehaviour
         {
             // Debug.Log(other.name);
             _onLog = true;
+        }
+
+        if (other.tag == "Coin")
+        {
+            ++coin;
+            // other.gameObject.SetActive(false);
+            Destroy(other.gameObject);
         }
     }
 

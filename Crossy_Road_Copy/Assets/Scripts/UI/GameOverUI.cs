@@ -10,6 +10,6 @@ public class GameOverUI : MonoBehaviour
     public void Activate(int bestScore)
     {
         gameObject.SetActive(true);
-        BestScoreUI.text = $"{bestScore}√ ";
+        BestScoreUI.text = $"{bestScore}";
     }
 }
