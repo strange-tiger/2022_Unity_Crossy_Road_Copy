@@ -11,14 +11,14 @@ public class MapManager : MonoBehaviour
         Grass2,
         Road,
         Rail,
-        //River0,
-        //River1,
+        River0,
+        River1,
         Max
     }
 
-    public PlayerMovement playerMovement;
-    public PlayerInput playerInput;
-    public const int TilesNum = 5;
+    public ScoreText score;
+    public PlayerInput input;
+    public const int TilesNum = (int)TileType.Max;
     public GameObject[] _tiles = new GameObject[TilesNum];
     public const float TileWidth = 1.5f;
     public const int SafeTileNum = 10;
@@ -27,7 +27,8 @@ public class MapManager : MonoBehaviour
     private Vector3 _currentPosition = new Vector3(0f, 0f, -12f);
     private int _tileCount = 0;
     private int _maxTileCount = 60;
-    
+    private int _prevScore = 0;
+
     private void Start()
     {
         for (int i = 0; i < SafeTileNum; ++i)
@@ -49,14 +50,15 @@ public class MapManager : MonoBehaviour
 
     void Update()
     {
-        if (playerMovement.transform.position.z < 6f)
+        if (score.playerMovement.transform.position.z < 6f)
         {
             return;
         }
 
-        if (playerInput.VerticalMove > 0f)
+        if (score.score > _prevScore)
         {
             SpawnTile();
+            _prevScore = score.score;
         }
     }
 
@@ -64,7 +66,7 @@ public class MapManager : MonoBehaviour
     private int randomMax = (int)TileType.Max;
     public void SpawnTile()
     {
-        _currentPosition.x = playerMovement.transform.position.x;
+        _currentPosition.x = score.playerMovement.transform.position.x;
         float direction = Random.value;
         GameObject tile;
         if (direction < 0.5f)

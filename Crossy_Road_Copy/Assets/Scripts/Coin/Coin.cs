@@ -6,10 +6,10 @@ public class Coin : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Obstacles")
+        if (other.tag == "Tree")
         {
-            return;
+            Destroy(gameObject);
+            //Debug.Log("Coin Destroied");
         }
-        Destroy(gameObject);
     }
 }

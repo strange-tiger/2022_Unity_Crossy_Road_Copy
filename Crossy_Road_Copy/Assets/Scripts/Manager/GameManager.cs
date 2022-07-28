@@ -36,6 +36,11 @@ public class GameManager : MonoBehaviour //SingletonBehaviour<GameManager>
         _isGameOver = true;
     }
 
+    public void DeleteData()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
     private void reset()
     {
         _isGameOver = false;

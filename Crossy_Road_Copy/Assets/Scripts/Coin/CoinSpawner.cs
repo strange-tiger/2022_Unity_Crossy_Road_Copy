@@ -20,9 +20,9 @@ public class CoinSpawner : MonoBehaviour, ISpawner
     {
         while (_count != 0)
         {
-            GameObject waterLily = Instantiate(CoinPrefab, transform.position + new Vector3(_position, 0f, 0f), transform.rotation);
-            Debug.Log("Coin");
-            waterLily.transform.SetParent(transform);
+            GameObject coin = Instantiate(CoinPrefab, transform.position + _position * transform.forward, transform.rotation);
+            //Debug.Log("Coin");
+            coin.transform.SetParent(transform);
             --_count;
             // Debug.Log(_position);
             yield return _position = Random.value * TileSize;
