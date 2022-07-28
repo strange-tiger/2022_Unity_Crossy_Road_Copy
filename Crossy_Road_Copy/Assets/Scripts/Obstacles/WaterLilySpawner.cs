@@ -15,7 +15,7 @@ public class WaterLilySpawner : MonoBehaviour, ISpawner
     private void Awake()
     {
         _count = 2 * Random.Range(MinWaterLilyNum, MaxWaterLilyNum);
-        _distance = RiverTransform.localScale.x / (_count + 1);
+        _distance = RiverTransform.localScale.x / _count;
         _position = _distance;
         StartCoroutine(Spawn());
     }
@@ -24,7 +24,7 @@ public class WaterLilySpawner : MonoBehaviour, ISpawner
     {
         while (_count != 0)
         {
-            GameObject waterLily = Instantiate(WaterLilyPrefab, gameObject.transform.position + new Vector3(_position, 0f, 0f), gameObject.transform.rotation);
+            GameObject waterLily = Instantiate(WaterLilyPrefab, gameObject.transform.position + _position * transform.forward, gameObject.transform.rotation);
             waterLily.transform.SetParent(transform);
             --_count;
             // Debug.Log(_position);
