@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -11,7 +9,6 @@ public class ScoreText : MonoBehaviour
     private TextMeshProUGUI _ui;
     private void Awake()
     {
-        // PlayerPrefs.DeleteAll();
         _ui = GetComponent<TextMeshProUGUI>();    
         score = 0;
     }

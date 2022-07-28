@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,8 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float JumpHeight = 1f;
     public float Speed = 5f;
 
-
-    public float LogSpeed = 10f;
+    public float LogSpeed = 5f;
     public int coin { get; private set; }
 
     private Transform _logCompareTransform;
@@ -58,7 +55,6 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 _speed *= Speed;
-                Debug.Log(_speed);
             }
         }
         
@@ -66,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
         {
             MoveBezierCurve();
         }
-
+        
         if (_onTree)
         {
             _newPosition = _prevPosition;
@@ -74,7 +70,6 @@ public class PlayerMovement : MonoBehaviour
             StopMoveBezierCurve();
             _onTree = !_onTree;
         }
-
 
         if (_onFloor)
         {
@@ -108,7 +103,6 @@ public class PlayerMovement : MonoBehaviour
         _endPosition = _newPosition;
         _middlePosition = (_startPosition + _endPosition) / 2 + JumpHeight * Vector3.up;
         _onMove = true;
-        // _speed = Speed;
     }
 
     private void DrawBezierCurve()
@@ -122,7 +116,6 @@ public class PlayerMovement : MonoBehaviour
     private void MoveBezierCurve()
     {
         _bezierTime += _speed * Time.deltaTime;
-        //Debug.Log(_bezierTime);
 
         if (_bezierTime > 1f)
         {
@@ -133,7 +126,6 @@ public class PlayerMovement : MonoBehaviour
         {
             DrawBezierCurve();
             _rigidboby.MovePosition(_bezierPositions);
-            // Debug.Log("Move");
         }
     }
 
@@ -150,14 +142,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Debug.Log("Floor");
         _onFloor = true;
         RecordPrevPosition();
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        // Debug.Log("Floor Exit");
         _onFloor = false;
         _onFloorTime = 0f;
     }
@@ -166,13 +156,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.tag == "Tree")
         {
-            // Debug.Log("Tree");
             _onTree = true;
         }
 
         if (other.tag == "Log")
         {
-            // Debug.Log(other.name);
             _onLog = true;
             
             _logDirection = other.transform.forward;

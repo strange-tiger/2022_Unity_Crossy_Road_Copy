@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +8,13 @@ public class MapManager : MonoBehaviour
         Grass0,
         Grass1,
         Grass2,
+        Grass3,
+        Grass4,
+        Grass5,
+        Grass6,
+        Grass7,
+        Grass8,
+        Grass9,
         Road,
         Rail,
         River0,

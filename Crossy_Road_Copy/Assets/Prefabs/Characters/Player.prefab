@@ -161,7 +161,7 @@ MonoBehaviour:
   MoveDistance: 1.5
   JumpHeight: 1
   Speed: 5
-  LogSpeed: 10
+  LogSpeed: 5
 --- !u!65 &5689248062253481729
 BoxCollider:
   m_ObjectHideFlags: 0

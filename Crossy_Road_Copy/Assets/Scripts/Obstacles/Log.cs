@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Log : MonoBehaviour
 {
-    public float Speed = 10f;
+    public float Speed = 5f;
     public float MaintenanceTime;
     
     void Start()

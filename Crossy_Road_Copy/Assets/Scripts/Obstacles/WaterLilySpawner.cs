@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WaterLilySpawner : MonoBehaviour, ISpawner
@@ -26,8 +25,8 @@ public class WaterLilySpawner : MonoBehaviour, ISpawner
         {
             GameObject waterLily = Instantiate(WaterLilyPrefab, gameObject.transform.position + _position * transform.forward, gameObject.transform.rotation);
             waterLily.transform.SetParent(transform);
+            
             --_count;
-            // Debug.Log(_position);
             yield return _position += _distance;
         }
     }

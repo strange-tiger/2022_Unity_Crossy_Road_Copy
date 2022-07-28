@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour //SingletonBehaviour<GameManager>
@@ -17,8 +14,13 @@ public class GameManager : MonoBehaviour //SingletonBehaviour<GameManager>
         if (_isGameOver)
         {
             reset();
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
+    }
+    
+    private void reset()
+    {
+        _isGameOver = false;
     }
 
     public void End()
@@ -41,8 +43,8 @@ public class GameManager : MonoBehaviour //SingletonBehaviour<GameManager>
         PlayerPrefs.DeleteAll();
     }
 
-    private void reset()
+    public void LoadTitle()
     {
-        _isGameOver = false;
+        SceneManager.LoadScene(0);
     }
 }
