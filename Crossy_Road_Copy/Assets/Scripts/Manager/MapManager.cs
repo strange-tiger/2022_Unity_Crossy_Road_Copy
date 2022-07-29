@@ -22,17 +22,17 @@ public class MapManager : MonoBehaviour
         Max
     }
 
-    public ScoreText score;
+    public PlayerScore score;
     public PlayerInput input;
-    public const int TilesNum = (int)TileType.Max;
     public GameObject[] _tiles = new GameObject[TilesNum];
-    public const float TileWidth = 1.5f;
-    public const int SafeTileNum = 10;
+    public const int TilesNum = (int)TileType.Max;
+    public const float TileWidth = 1.0f;
+    public const int SafeTileNum = 15;
 
     private List<GameObject> _tilesList = new List<GameObject>();
-    private Vector3 _currentPosition = new Vector3(0f, 0f, -12f);
+    private Vector3 _currentPosition = new Vector3(0f, 0f, -10f);
     private int _tileCount = 0;
-    private int _maxTileCount = 60;
+    private int _maxTileCount = 100;
     private int _prevScore = 0;
 
     private void Start()
@@ -56,7 +56,7 @@ public class MapManager : MonoBehaviour
 
     void Update()
     {
-        if (score.playerMovement.transform.position.z < 6f)
+        if (score.transform.position.z < 6f)
         {
             return;
         }
@@ -72,7 +72,7 @@ public class MapManager : MonoBehaviour
     private int randomMax = (int)TileType.Max;
     public void SpawnTile()
     {
-        _currentPosition.x = score.playerMovement.transform.position.x;
+        _currentPosition.x = score.transform.position.x;
         float direction = Random.value;
         GameObject tile;
         if (direction < 0.5f)

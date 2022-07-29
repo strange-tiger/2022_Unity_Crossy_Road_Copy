@@ -5,7 +5,7 @@ public class WaterLilySpawner : MonoBehaviour, ISpawner
 {
     public GameObject WaterLilyPrefab;
     public int MinWaterLilyNum = 1;
-    public int MaxWaterLilyNum = 5;
+    public int MaxWaterLilyNum = 3;
     public Transform RiverTransform;
     
     private int _count;

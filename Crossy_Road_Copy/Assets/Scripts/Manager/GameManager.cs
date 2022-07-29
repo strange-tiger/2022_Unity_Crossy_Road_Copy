@@ -4,8 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour //SingletonBehaviour<GameManager>
 {
     public GameOverUI GameOverUI;
-    public ScoreText Score;
-    public CoinText Coin;
+    public PlayerScore Score;
     public CamTarget CamTarget;
 
     private bool _isGameOver = false;
@@ -31,7 +30,7 @@ public class GameManager : MonoBehaviour //SingletonBehaviour<GameManager>
         int savedBestScore = PlayerPrefs.GetInt("BestScore", 0);
         int bestScore = Mathf.Max((int)Score.score, savedBestScore);
         PlayerPrefs.SetInt("BestScore", bestScore);
-        PlayerPrefs.SetInt("Coin", (int)Coin.player.coin);
+        PlayerPrefs.SetInt("Coin", (int)Score.coin);
 
         GameOverUI.Activate(bestScore);
 

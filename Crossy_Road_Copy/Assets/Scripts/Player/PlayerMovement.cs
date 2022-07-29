@@ -3,13 +3,12 @@ using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float MoveDistance = 1.5f;
+    public float MoveDistance = 1.0f;
     public float JumpHeight = 1f;
     public float Speed = 5f;
 
     public float LogSpeed = 5f;
-    public int coin { get; private set; }
-
+   
     private Transform _logCompareTransform;
     private PlayerInput _input;
     private Rigidbody _rigidboby;
@@ -19,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     {
         _input = GetComponent<PlayerInput>();
         _rigidboby = GetComponent<Rigidbody>();
-        coin = PlayerPrefs.GetInt("Coin", 0);
         _speed = Speed;
     }
 
@@ -65,9 +63,9 @@ public class PlayerMovement : MonoBehaviour
         
         if (_onTree)
         {
+            StopMoveBezierCurve();
             _newPosition = _prevPosition;
             _rigidboby.MovePosition(_prevPosition);
-            StopMoveBezierCurve();
             _onTree = !_onTree;
         }
 
@@ -79,11 +77,24 @@ public class PlayerMovement : MonoBehaviour
                 _speed = Speed;
             }
         }
+
+        if(!_onMove && !_onLog)
+        {
+            AdjustPosition();
+        }
     }
 
     private void RecordPrevPosition()
     {
         _prevPosition = transform.position;
+    }
+
+    private void AdjustPosition()
+    {
+        Vector3 _adjustment = transform.position;
+        _adjustment.x = Mathf.Round(_adjustment.x);
+        _adjustment.z = Mathf.Round(_adjustment.z);
+        transform.position = _adjustment;
     }
 
     private float _bezierTime = 0f;
@@ -162,15 +173,8 @@ public class PlayerMovement : MonoBehaviour
         if (other.tag == "Log")
         {
             _onLog = true;
-            
-            _logDirection = other.transform.forward;
-        }
 
-        if (other.tag == "Coin")
-        {
-            ++coin;
-            // other.gameObject.SetActive(false);
-            Destroy(other.gameObject);
+            _logDirection = other.transform.forward;
         }
     }
 
