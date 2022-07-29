@@ -369,6 +369,7 @@
 "Assets/Scripts/Player/PlayerHealth.cs"
 "Assets/Scripts/Player/PlayerInput.cs"
 "Assets/Scripts/Player/PlayerMovement.cs"
+"Assets/Scripts/Player/PlayerScore.cs"
 "Assets/Scripts/Title/MoveTitle.cs"
 "Assets/Scripts/UI/CoinText.cs"
 "Assets/Scripts/UI/GameOverUI.cs"

@@ -3,7 +3,7 @@ using TMPro;
 
 public class CoinText : MonoBehaviour
 {
-    public PlayerMovement player;
+    public PlayerScore player;
 
     private TextMeshProUGUI _ui;
     private void Awake()

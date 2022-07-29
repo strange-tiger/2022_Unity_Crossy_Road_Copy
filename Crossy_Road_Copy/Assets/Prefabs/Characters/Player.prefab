@@ -96,9 +96,9 @@ GameObject:
   - component: {fileID: 5689248062253481732}
   - component: {fileID: 5689248062253481731}
   - component: {fileID: 5689248062253481730}
+  - component: {fileID: 2858977625460353176}
   - component: {fileID: 5689248062253481729}
   - component: {fileID: 5689248062253481728}
-  - component: {fileID: 5689248062253481759}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -158,10 +158,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7d05918781d06f45bb260cd1872c5ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveDistance: 1.5
+  MoveDistance: 1
   JumpHeight: 1
   Speed: 5
   LogSpeed: 5
+--- !u!114 &2858977625460353176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5689248062253481758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca03c0f36dd37c5469d5e035b3cf76e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &5689248062253481729
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -173,7 +185,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.9, y: 1, z: 0.9}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &5689248062253481728
 Rigidbody:
@@ -191,26 +203,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
---- !u!95 &5689248062253481759
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5689248062253481758}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 175d222107ba1824fa7c95eed4037645, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5689248062254570368
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,7 +214,6 @@ GameObject:
   - component: {fileID: 5689248062254570372}
   - component: {fileID: 5689248062254570371}
   - component: {fileID: 5689248062254570370}
-  - component: {fileID: 5689248062254570369}
   m_Layer: 0
   m_Name: Mouth
   m_TagString: Untagged
@@ -238,7 +229,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5689248062254570368}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0.45}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -295,16 +286,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5689248062254570369
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5689248062254570368}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
