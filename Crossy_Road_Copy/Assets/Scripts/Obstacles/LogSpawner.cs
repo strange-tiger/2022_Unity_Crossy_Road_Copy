@@ -4,8 +4,8 @@ using UnityEngine;
 public class LogSpawner : MonoBehaviour, ISpawner
 {
     public GameObject[] LogPrefab = new GameObject[3];
-    public float MinSpawnCooltime = 2f;
-    public float MaxSpawnCooltime = 4f;
+    public float MinSpawnCooltime = 4f;
+    public float MaxSpawnCooltime = 6f;
 
     private GameObject _logPrefab;
     private float _spawnCooltime;
