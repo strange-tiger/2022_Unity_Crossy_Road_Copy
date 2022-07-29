@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6fe9380df9fdbe48b613181640fcc3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SwipeRange: 1
 --- !u!114 &5689248062253481730
 MonoBehaviour:
   m_ObjectHideFlags: 0

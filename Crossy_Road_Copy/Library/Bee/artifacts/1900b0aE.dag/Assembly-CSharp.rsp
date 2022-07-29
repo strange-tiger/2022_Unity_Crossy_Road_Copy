@@ -363,6 +363,7 @@
 "Assets/Scripts/Obstacles/Log.cs"
 "Assets/Scripts/Obstacles/LogSpawner.cs"
 "Assets/Scripts/Obstacles/TrainSpawner.cs"
+"Assets/Scripts/Obstacles/TreeSpawner.cs"
 "Assets/Scripts/Obstacles/Vehicle.cs"
 "Assets/Scripts/Obstacles/VehicleSpawner.cs"
 "Assets/Scripts/Obstacles/WaterLilySpawner.cs"

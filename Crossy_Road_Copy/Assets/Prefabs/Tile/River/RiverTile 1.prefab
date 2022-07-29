@@ -93,7 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WaterLilyPrefab: {fileID: 1776261025508331235, guid: 3bead054bc1552e42af3c4be72a018d7, type: 3}
   MinWaterLilyNum: 1
-  MaxWaterLilyNum: 10
+  MaxWaterLilyNum: 3
   RiverTransform: {fileID: 8802586342601156587, guid: 90dccbb6dac336a44a32ef94b56f3529, type: 3}
 --- !u!1001 &5801814171518821225
 PrefabInstance:
