@@ -82,7 +82,7 @@ public class MapManager : MonoBehaviour
         }
         else
         {
-            tile = Instantiate(_tiles[tileIndex], _currentPosition, Quaternion.EulerRotation(0f, -1 * Mathf.PI, 0f));
+            tile = Instantiate(_tiles[tileIndex], _currentPosition, Quaternion.Euler(0f, 180f, 0f));
         }
         _prevTileIndex = tileIndex;
 
