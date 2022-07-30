@@ -56,7 +56,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2330430113263855218}
-  - component: {fileID: 7655703375506888456}
+  - component: {fileID: 5590482171226013121}
   m_Layer: 0
   m_Name: WaterLilySpawner
   m_TagString: Untagged
@@ -79,7 +79,7 @@ Transform:
   m_Father: {fileID: 1673319848493917988}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &7655703375506888456
+--- !u!114 &5590482171226013121
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,13 +88,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8424607464754621370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03155d92f4287dd42a389e867620d0c6, type: 3}
+  m_Script: {fileID: 11500000, guid: a9fdc7e593dfbd747998f6b05b9fbec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WaterLilyPrefab: {fileID: 1776261025508331235, guid: 3bead054bc1552e42af3c4be72a018d7, type: 3}
-  MinWaterLilyNum: 1
-  MaxWaterLilyNum: 3
-  RiverTransform: {fileID: 8802586342601156587, guid: 90dccbb6dac336a44a32ef94b56f3529, type: 3}
+  Prefab: {fileID: 1776261025508331235, guid: 3bead054bc1552e42af3c4be72a018d7, type: 3}
+  MinNum: 1
+  MaxNum: 5
+  TileSize: 60
+  InitPosition: 0
 --- !u!1001 &5801814171518821225
 PrefabInstance:
   m_ObjectHideFlags: 0

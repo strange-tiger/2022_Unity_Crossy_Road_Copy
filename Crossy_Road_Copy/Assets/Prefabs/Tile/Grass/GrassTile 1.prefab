@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7046642488749792051}
-  - component: {fileID: 851243162745672833}
+  - component: {fileID: 7640389724111442605}
   m_Layer: 0
   m_Name: TreeSpawner
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 9133899183403733054}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &851243162745672833
+--- !u!114 &7640389724111442605
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,13 +41,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3628880974914722318}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0364da6a3c55a342b20061bebd6e011, type: 3}
+  m_Script: {fileID: 11500000, guid: a9fdc7e593dfbd747998f6b05b9fbec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TreePrefab: {fileID: 1653447038799390116, guid: f9fa1efd0101d974ba81c20fe1360470, type: 3}
-  MinTreeNum: 1
-  MaxTreeNum: 10
-  GrassTransform: {fileID: 1851267396842294513, guid: 4765025636e1c7e4db795ffb2fea2a30, type: 3}
+  Prefab: {fileID: 1653447038799390116, guid: f9fa1efd0101d974ba81c20fe1360470, type: 3}
+  MinNum: 1
+  MaxNum: 10
+  TileSize: 60
+  InitPosition: 1
 --- !u!1 &4716589377911962451
 GameObject:
   m_ObjectHideFlags: 0
