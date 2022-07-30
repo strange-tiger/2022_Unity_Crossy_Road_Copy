@@ -7,10 +7,11 @@ public class CoinSpawner : MonoBehaviour, ISpawner
     public float TileSize = 60f;
 
     private int _count;
+    private float _weight = 1.5f;
     private float _position;
     private void Awake()
     {
-        _count = (int)(1.5f * Random.value);
+        _count = (int)(_weight * Random.value);
         _position = Random.value * TileSize;
         StartCoroutine(Spawn());
     }
