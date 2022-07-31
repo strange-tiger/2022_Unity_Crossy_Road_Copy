@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 378dfdcdc85dc02429e6155de8208275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TrainPrefab: {fileID: 8271443825555790135, guid: edc57812f13e13c49a0b9e35956f2d05, type: 3}
+  TrainPrefab: {fileID: 1198080351587448, guid: 66995d422d8d8284982f85c086004d15, type: 3}
   TrainLight: {fileID: 7171833605019366763}
   MinSpawnCooltime: 4
   MaxSpawnCooltime: 8

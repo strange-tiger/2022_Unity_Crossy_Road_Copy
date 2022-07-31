@@ -354,6 +354,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/External Assets/VoxelAnimals/Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/Coin/Coin.cs"
 "Assets/Scripts/Coin/CoinSpawner.cs"
 "Assets/Scripts/Manager/CamTarget.cs"
