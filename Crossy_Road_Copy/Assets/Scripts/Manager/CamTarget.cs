@@ -35,4 +35,19 @@ public class CamTarget : MonoBehaviour
 
         transform.position = thisPosition;
     }
+
+    public void Deactivate()
+    {
+        isOn = false;
+    }
+
+    void OnEnable()
+    {
+        GameManager.Instance.OnGameOver.AddListener(Deactivate);
+    }
+
+    void OnDisable()
+    {
+        GameManager.Instance.OnGameOver.RemoveListener(Deactivate);
+    }
 }
