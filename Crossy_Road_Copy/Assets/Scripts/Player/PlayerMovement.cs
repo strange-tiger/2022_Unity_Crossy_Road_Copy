@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Transform _logCompareTransform;
     private PlayerInput _input;
     private Rigidbody _rigidboby;
+    private Animator _animator;
     private Vector3 _newPosition = new Vector3(0f, 0.5f, 0f);
     private float _speed;
     private void Awake()
@@ -21,16 +23,34 @@ public class PlayerMovement : MonoBehaviour
         _speed = Speed;
     }
 
+    private void Start()
+    {
+        _animator = GetComponentInChildren<Animator>();
+    }
+
     private Vector3 _logDirection;
     private bool _onLog = false;
-    private void FixedUpdate()
+    //private void FixedUpdate()
+    //{
+    //    if (_onLog)
+    //    {
+    //        RecordPrevPosition();
+    //        _newPosition += LogSpeed * Time.fixedDeltaTime * _logDirection;
+    //        _rigidboby.MovePosition(_newPosition);
+    //        StopMoveBezierCurve();
+    //    }
+    //}
+
+    public IEnumerator OnLog()
     {
-        if (_onLog)
+        while(_onLog)
         {
             RecordPrevPosition();
-            _newPosition += LogSpeed * Time.fixedDeltaTime * _logDirection;
-            _rigidboby.MovePosition(_newPosition);
+            transform.position += LogSpeed * Time.fixedDeltaTime * _logDirection;
+            _newPosition = transform.position;
             StopMoveBezierCurve();
+
+            yield return new WaitForSeconds(Time.fixedDeltaTime);
         }
     }
 
@@ -41,6 +61,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _prevPosition;
     private void Update()
     {
+        StartCoroutine(OnLog());
+
         float horizontalMovement = MoveDistance * _input.HorizontalMove;
         float verticalMovement = MoveDistance * _input.VerticalMove;
 
@@ -54,6 +76,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 _speed *= Speed;
             }
+
+            _animator.SetTrigger("jump");
         }
         
         if (_onMove)
@@ -157,10 +181,24 @@ public class PlayerMovement : MonoBehaviour
         RecordPrevPosition();
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "Log")
+        {
+            _onLog = true;
+            _logDirection = collision.transform.forward;
+        }
+    }
+
     private void OnCollisionExit(Collision collision)
     {
         _onFloor = false;
         _onFloorTime = 0f;
+
+        if (collision.gameObject.tag == "Log")
+        {
+            _onLog = false;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -170,19 +208,18 @@ public class PlayerMovement : MonoBehaviour
             _onTree = true;
         }
 
-        if (other.tag == "Log")
-        {
-            _onLog = true;
-
-            _logDirection = other.transform.forward;
-        }
+        //if (other.tag == "Log")
+        //{
+        //    _onLog = true;
+        //    _logDirection = other.transform.forward;
+        //}
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Log")
-        {
-            _onLog = false;
-        }
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.tag == "Log")
+    //    {
+    //        _onLog = false;
+    //    }
+    //}
 }
