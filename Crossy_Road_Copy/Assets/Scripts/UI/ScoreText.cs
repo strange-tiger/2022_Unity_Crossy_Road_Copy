@@ -3,16 +3,22 @@ using TMPro;
 
 public class ScoreText : MonoBehaviour
 {
-    public PlayerScore player;
-
     private TextMeshProUGUI _ui;
     private void Awake()
     {
-        _ui = GetComponent<TextMeshProUGUI>();    
+        _ui = GetComponent<TextMeshProUGUI>();
+        UpdateText(0);
     }
 
-    private void Update()
+    public void UpdateText(int score) => _ui.text = $"{score}";
+
+    void OnEnable()
     {
-        _ui.text = $"{player.score}";
+        GameManager.Instance.OnScoreChanged.AddListener(UpdateText);
+    }
+
+    void OnDisable()
+    {
+        GameManager.Instance.OnScoreChanged.RemoveListener(UpdateText);
     }
 }

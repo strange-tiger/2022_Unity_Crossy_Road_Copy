@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class PlayerScore : MonoBehaviour
 {
-    public int coin { get; private set; }
-    public int score { get; private set; }
-
-    private void Awake()
-    {
-        coin = PlayerPrefs.GetInt("Coin", 0);
-        score = 0;
-    }
-
     void Update()
     {
         GetScore();
@@ -21,9 +12,10 @@ public class PlayerScore : MonoBehaviour
     private void GetScore()
     {
         float currentPosition = transform.position.z;
+        int score = GameManager.Instance.CurrentScore;
         if (score + 1 <= currentPosition)
         {
-            score = (int)currentPosition;
+            GameManager.Instance.AddScore();
         }
     }
 
@@ -31,7 +23,7 @@ public class PlayerScore : MonoBehaviour
     {
         if (other.tag == "Coin")
         {
-            ++coin;
+            GameManager.Instance.AddCoin();
             // other.gameObject.SetActive(false);
             Destroy(other.gameObject);
         }

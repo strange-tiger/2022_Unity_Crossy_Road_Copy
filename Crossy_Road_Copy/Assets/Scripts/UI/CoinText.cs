@@ -3,16 +3,22 @@ using TMPro;
 
 public class CoinText : MonoBehaviour
 {
-    public PlayerScore player;
-
     private TextMeshProUGUI _ui;
     private void Awake()
     {
         _ui = GetComponent<TextMeshProUGUI>();
+        UpdateText(PlayerPrefs.GetInt("Coin", 0));
     }
 
-    private void Update()
+    public void UpdateText(int coin) => _ui.text = $"{coin}";
+
+    void OnEnable()
     {
-       _ui.text = $"{player.coin}";
+        GameManager.Instance.OnCoinChanged.AddListener(UpdateText);
+    }
+
+    void OnDisable()
+    {
+        GameManager.Instance.OnCoinChanged.RemoveListener(UpdateText);
     }
 }
