@@ -360,6 +360,7 @@
 "Assets/Scripts/Manager/CamTarget.cs"
 "Assets/Scripts/Manager/GameManager.cs"
 "Assets/Scripts/Manager/MapManager.cs"
+"Assets/Scripts/Manager/ShopManager.cs"
 "Assets/Scripts/Manager/TitleManager.cs"
 "Assets/Scripts/Obstacles/MovingObject.cs"
 "Assets/Scripts/Obstacles/MovingObjectSpawner.cs"
