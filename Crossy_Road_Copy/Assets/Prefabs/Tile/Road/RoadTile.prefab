@@ -49,7 +49,7 @@ MonoBehaviour:
   - {fileID: 8271443825555790135, guid: 48367f661a70ac24cb1ecadcc1c54125, type: 3}
   - {fileID: 8271443825555790135, guid: d34baa87137e0444492e7b0d291e9ef6, type: 3}
   - {fileID: 8271443825555790135, guid: 73bed5ae081cd5a4181ef40fe5bb371e, type: 3}
-  Tile: {fileID: 6966620898066006787}
+  TileSize: 60
   MinSpawnCooltime: 1.5
   MaxSpawnCooltime: 5
 --- !u!1 &6966620897687073216

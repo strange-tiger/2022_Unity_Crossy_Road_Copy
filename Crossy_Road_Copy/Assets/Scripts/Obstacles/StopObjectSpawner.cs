@@ -8,18 +8,18 @@ public class StopObjectSpawner : MonoBehaviour, ISpawner
     public int MaxNum = 5;
     public float TileLength = 60f;
     public float InitPosition = 0f;
+    public float Offset = 10f;
 
     private int _count;
     private float _position;
-    private float _offset = 10f;
     private int _tileLengthHalf;
     private float _distance = 2f;
     private void Awake()
     {
         _count = Random.Range(MinNum, MaxNum);
         _count = Random.Range(MinNum, MaxNum);
-        _tileLengthHalf = (int)((TileLength - 20f) / (2 * _count));
-        _position = InitPosition + _offset;
+        _tileLengthHalf = (int)((TileLength - Offset) / (2 * _count));
+        _position = InitPosition + Offset;
 
         StartCoroutine(Spawn());
     }

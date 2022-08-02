@@ -14,12 +14,12 @@ public class MapManager : MonoBehaviour
         Max
     }
 
-    public PlayerScore score;
-    public PlayerInput input;
-    public GameObject[] _tiles = new GameObject[TilesNum];
-    public const int TilesNum = (int)TileType.Max;
-    public const float TileWidth = 1.0f;
-    public const int SafeTileNum = 15;
+    public Transform player;
+    public GameObject[] _tiles = new GameObject[_TilesNum];
+
+    private const int _TilesNum = (int)TileType.Max;
+    private const float _TileWidth = 1.0f;
+    private const int _SafeTileNum = 15;
 
     private List<GameObject> _tilesList = new List<GameObject>();
     private Vector3 _currentPosition = new Vector3(0f, 0f, -10f);
@@ -28,13 +28,13 @@ public class MapManager : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < SafeTileNum; ++i)
+        for (int i = 0; i < _SafeTileNum; ++i)
         {
             GameObject tile;
             tile = Instantiate(_tiles[0], _currentPosition, Quaternion.identity);
             tile.transform.SetParent(transform);
             _tilesList.Add(tile);
-            _currentPosition.z += TileWidth;
+            _currentPosition.z += _TileWidth;
             ++_tileCount;
         }
 
@@ -44,27 +44,31 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    private int _prevScore = 0;
-    void Update()
+    public void UpdateTile(int score)
     {
-        if (score.transform.position.z < 6f)
+        if (player.position.z < 6f)
         {
             return;
         }
 
-        if (score.score > _prevScore)
-        {
-            SpawnTile();
-            ChangeTileRandomWeight();
-            _prevScore = score.score;
-        }
+        SpawnTile();
+        ChangeTileRandomWeight(score);
+    }
 
+    void OnEnable()
+    {
+        GameManager.Instance.OnScoreChanged.AddListener(UpdateTile);
+    }
+
+    void OnDisable()
+    {
+        GameManager.Instance.OnScoreChanged.RemoveListener(UpdateTile);
     }
 
     private int _prevTileIndex = (int)TileType.Max;
     public void SpawnTile()
     {
-        _currentPosition.x = score.transform.position.x;
+        _currentPosition.x = player.position.x;
         float direction = Random.value;
         int tileIndex = GetTileRandom();
         if (_prevTileIndex == (int)TileType.River1)
@@ -88,7 +92,7 @@ public class MapManager : MonoBehaviour
 
         tile.transform.SetParent(transform);
         _tilesList.Add(tile);
-        _currentPosition.z += TileWidth;
+        _currentPosition.z += _TileWidth;
         ++_tileCount;
 
         if (_tileCount > _maxTileCount)
@@ -102,9 +106,9 @@ public class MapManager : MonoBehaviour
     private int _nextStageNum = 50;
     private float[] _tileRandomWeight = new float[(int)TileType.Max] { 20f, 40f, 20f, 5f, 10f, 5f };
     private float _randomWeightSum = 100f;
-    private void ChangeTileRandomWeight()
+    private void ChangeTileRandomWeight(int score)
     {
-        if (score.score % _nextStageNum == 0)
+        if (score % _nextStageNum == 0)
         {
             _tileRandomWeight[(int)TileType.Road] += 10f;
             _tileRandomWeight[(int)TileType.Rail] += 10f;
