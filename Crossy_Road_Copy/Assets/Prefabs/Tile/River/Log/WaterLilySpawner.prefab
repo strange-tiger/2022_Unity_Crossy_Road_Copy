@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab: {fileID: 1776261025508331235, guid: 3bead054bc1552e42af3c4be72a018d7, type: 3}
-  MinNum: 1
+  MinNum: 2
   MaxNum: 5
   TileLength: 60
   InitPosition: 0
