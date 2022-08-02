@@ -7,8 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public float MoveDistance = 1.0f;
     public float JumpHeight = 1f;
     public float Speed = 5f;
-
     public float LogSpeed = 5f;
+    public float TimeToOffFastMode = 0.3f;
    
     private Transform _logCompareTransform;
     private PlayerInput _input;
@@ -30,27 +30,14 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 _logDirection;
     private bool _onLog = false;
-    //private void FixedUpdate()
-    //{
-    //    if (_onLog)
-    //    {
-    //        RecordPrevPosition();
-    //        _newPosition += LogSpeed * Time.fixedDeltaTime * _logDirection;
-    //        _rigidboby.MovePosition(_newPosition);
-    //        StopMoveBezierCurve();
-    //    }
-    //}
-
-    public IEnumerator OnLog()
+    private void FixedUpdate()
     {
-        while(_onLog)
+        if (_onLog)
         {
             RecordPrevPosition();
             transform.position += LogSpeed * Time.fixedDeltaTime * _logDirection;
             _newPosition = transform.position;
             StopMoveBezierCurve();
-
-            yield return new WaitForSeconds(Time.fixedDeltaTime);
         }
     }
 
@@ -61,8 +48,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _prevPosition;
     private void Update()
     {
-        StartCoroutine(OnLog());
-
         float horizontalMovement = MoveDistance * _input.HorizontalMove;
         float verticalMovement = MoveDistance * _input.VerticalMove;
 
@@ -78,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             _animator.SetTrigger("jump");
+            _onLog = false;
         }
         
         if (_onMove)
@@ -96,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         if (_onFloor)
         {
             _onFloorTime += Time.deltaTime;
-            if(_onFloorTime > 0.5f)
+            if(_onFloorTime > TimeToOffFastMode)
             {
                 _speed = Speed;
             }
@@ -207,19 +193,5 @@ public class PlayerMovement : MonoBehaviour
         {
             _onTree = true;
         }
-
-        //if (other.tag == "Log")
-        //{
-        //    _onLog = true;
-        //    _logDirection = other.transform.forward;
-        //}
     }
-
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.tag == "Log")
-    //    {
-    //        _onLog = false;
-    //    }
-    //}
 }
