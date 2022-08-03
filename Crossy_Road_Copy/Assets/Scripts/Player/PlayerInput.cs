@@ -21,6 +21,7 @@ public class PlayerInput : MonoBehaviour
         GetTouchInput();
 #else
         GetKeyInput();
+        GetMouseInput();
 #endif
         SetMovement();
         direction = Direction.idle;
