@@ -9,8 +9,13 @@ public class TitleManager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public void LoadShop()
+    public void quit()
     {
-        SceneManager.LoadScene(2);
+        Application.Quit();
     }
+
+    //public void LoadShop()
+    //{
+    //    SceneManager.LoadScene(2);
+    //}
 }
