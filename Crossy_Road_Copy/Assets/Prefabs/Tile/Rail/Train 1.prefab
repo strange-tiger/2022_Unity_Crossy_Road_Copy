@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 65651285274354348}
   m_Layer: 0
   m_Name: Chassis
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,7 +175,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101441763822970}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.28589, y: 4.17407, z: 22.593102}
@@ -474,7 +474,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4488098957211032}
   - component: {fileID: 205165806909326184}
-  - component: {fileID: 4854349809391546500}
   - component: {fileID: 2644629514699983791}
   m_Layer: 0
   m_Name: Train 1
@@ -553,19 +552,6 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers: []
   m_Enabled: 1
---- !u!65 &4854349809391546500
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1198080351587448}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2644629514699983791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,7 +565,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 120
-  MaintenanceTime: 0
 --- !u!1 &1204914307955804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1447,7 +1432,7 @@ GameObject:
   - component: {fileID: 65907838302838926}
   m_Layer: 0
   m_Name: Chassis
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1525,7 +1510,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1474746651166002}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.7011871, y: 3.39121, z: 22.132599}
@@ -1793,7 +1778,7 @@ GameObject:
   - component: {fileID: 65656961121507962}
   m_Layer: 0
   m_Name: Chassis
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1871,7 +1856,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1612667705106042}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.392998, y: 4.1910696, z: 18.41824}
@@ -1973,7 +1958,7 @@ GameObject:
   - component: {fileID: 65523063363674786}
   m_Layer: 0
   m_Name: Chassis
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2051,7 +2036,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632920921522348}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.3930058, y: 3.8675098, z: 18.41824}
@@ -2153,7 +2138,7 @@ GameObject:
   - component: {fileID: 65400994137041230}
   m_Layer: 0
   m_Name: Chassis
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2231,7 +2216,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689511797935660}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.8342319, y: 5.3456, z: 24.2753}
@@ -2368,7 +2353,7 @@ GameObject:
   - component: {fileID: 65948658702683216}
   m_Layer: 0
   m_Name: Chassis
-  m_TagString: Untagged
+  m_TagString: Obstacles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2446,7 +2431,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798195664428006}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.2858849, y: 4.17118, z: 22.604}
