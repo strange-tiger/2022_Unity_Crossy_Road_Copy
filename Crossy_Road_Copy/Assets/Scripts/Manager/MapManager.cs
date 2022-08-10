@@ -15,30 +15,49 @@ public class MapManager : MonoBehaviour
     }
 
     public Transform player;
-    public GameObject[] _tiles = new GameObject[_TilesNum];
+    public GameObject[] _tilesOrigin = new GameObject[_TilesNum];
 
     private const int _TilesNum = (int)TileType.Max;
     private const float _TileWidth = 1.0f;
     private const int _SafeTileNum = 15;
+    private const int _MaxTileCount = 50;
 
     private List<GameObject> _tilesList = new List<GameObject>();
     private Vector3 _currentPosition = new Vector3(0f, 0f, -10f);
     private int _tileCount = 0;
-    private int _maxTileCount = 50;
 
+    private GameObject[][] _tiles;
+    private int[] _tileOrder = new int[_TilesNum];
     private void Start()
     {
         for (int i = 0; i < _SafeTileNum; ++i)
         {
             GameObject tile;
-            tile = Instantiate(_tiles[0], _currentPosition, Quaternion.identity);
+            tile = Instantiate(_tilesOrigin[0], _currentPosition, Quaternion.identity);
             tile.transform.SetParent(transform);
             _tilesList.Add(tile);
             _currentPosition.z += _TileWidth;
             ++_tileCount;
         }
 
-        while (_tileCount < _maxTileCount)
+        for (int i = 0; i < _TilesNum; ++i)
+            _tiles[i] = new GameObject[_MaxTileCount];
+
+        for (int i = 0; i < _TilesNum; ++i)
+        {
+            for (int j = 0; j < _MaxTileCount; ++j)
+            {
+                GameObject tile;
+                _tiles[i][j] = _tilesOrigin[i];
+                tile = Instantiate(_tiles[i][j], _currentPosition, Quaternion.identity);
+                tile.transform.SetParent(transform);
+                tile.SetActive(false);
+            }
+
+            _tileOrder[i] = 0;
+        }
+
+        while (_tileCount < _MaxTileCount)
         {
             SpawnTile();
         }
@@ -71,6 +90,7 @@ public class MapManager : MonoBehaviour
         _currentPosition.x = player.position.x;
         float direction = Random.value;
         int tileIndex = GetTileRandom();
+        
         if (_prevTileIndex == (int)TileType.River1)
         {
             if (_prevTileIndex == tileIndex)
@@ -80,24 +100,28 @@ public class MapManager : MonoBehaviour
         }
 
         GameObject tile;
-        if (direction < 0.5f)
+        tile = _tiles[tileIndex][_tileOrder[tileIndex]];
+        if (direction > 0.5f)
         {
-            tile = Instantiate(_tiles[tileIndex], _currentPosition, Quaternion.identity);
-        }
-        else
-        {
-            tile = Instantiate(_tiles[tileIndex], _currentPosition, Quaternion.Euler(0f, 180f, 0f));
+            tile.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
         _prevTileIndex = tileIndex;
 
-        tile.transform.SetParent(transform);
-        _tilesList.Add(tile);
+        tile.transform.position = _currentPosition;
         _currentPosition.z += _TileWidth;
-        ++_tileCount;
+        tile.SetActive(true);
 
-        if (_tileCount > _maxTileCount)
+        _tilesList.Add(tile);
+        ++_tileCount;
+        ++_tileOrder[tileIndex];
+        if (_tileOrder[tileIndex] >= _MaxTileCount)
         {
-            Destroy(_tilesList[0]);
+            _tileOrder[tileIndex] = 0;
+        }
+
+        if (_tileCount > _MaxTileCount)
+        {
+            _tilesList[0].SetActive(false);
             _tilesList.RemoveAt(0);
             --_tileCount;
         }
