@@ -15,15 +15,18 @@ public class TrainSpawner : MonoBehaviour, ISpawner
     private float _trainIsGoing = 1f;
     private void Awake()
     {
-        _spawnCooltime = Random.Range(MinSpawnCooltime, MaxSpawnCooltime);
-        
         _train = Instantiate(TrainPrefab, transform.position, transform.rotation);
         _train.transform.SetParent(transform);
         _train.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        _spawnCooltime = Random.Range(MinSpawnCooltime, MaxSpawnCooltime);
 
         StartCoroutine(Spawn());
     }
-    
+
     public IEnumerator Spawn()
     {
         while (true)

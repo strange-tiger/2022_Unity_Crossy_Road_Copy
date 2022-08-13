@@ -26,7 +26,7 @@ public class MapManager : MonoBehaviour
     private Vector3 _currentPosition = new Vector3(0f, 0f, -10f);
     private int _tileCount = 0;
 
-    private GameObject[][] _tiles;
+    private GameObject[][] _tiles = new GameObject[_TilesNum][];
     private int[] _tileOrder = new int[_TilesNum];
     private void Start()
     {
@@ -41,17 +41,16 @@ public class MapManager : MonoBehaviour
         }
 
         for (int i = 0; i < _TilesNum; ++i)
+        {
             _tiles[i] = new GameObject[_MaxTileCount];
 
-        for (int i = 0; i < _TilesNum; ++i)
-        {
             for (int j = 0; j < _MaxTileCount; ++j)
             {
                 GameObject tile;
-                _tiles[i][j] = _tilesOrigin[i];
-                tile = Instantiate(_tiles[i][j], _currentPosition, Quaternion.identity);
-                tile.transform.SetParent(transform);
-                tile.SetActive(false);
+                tile = _tilesOrigin[i];
+                _tiles[i][j] = Instantiate(tile, transform.position, Quaternion.identity);
+                _tiles[i][j].transform.SetParent(transform);
+                _tiles[i][j].SetActive(false);
             }
 
             _tileOrder[i] = 0;

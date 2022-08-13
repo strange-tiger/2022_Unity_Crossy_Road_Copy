@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TrainPrefab: {fileID: 1198080351587448, guid: 66995d422d8d8284982f85c086004d15, type: 3}
-  TrainLight: {fileID: 0}
+  TrainLight: {fileID: 4451386749796516001, guid: 8c94a9434eea07741ab8ed72e014ccd8, type: 3}
   MinSpawnCooltime: 4
   MaxSpawnCooltime: 8
