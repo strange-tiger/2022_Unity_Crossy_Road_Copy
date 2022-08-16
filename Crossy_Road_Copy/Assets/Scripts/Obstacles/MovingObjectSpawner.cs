@@ -3,22 +3,27 @@ using UnityEngine;
 
 public class MovingObjectSpawner : MonoBehaviour, ISpawner
 {
-    public const int PrefabKindNum = 4;
+    public int PrefabKindNum = 4;
     
-    public GameObject[] PrefabKinds = new GameObject[PrefabKindNum];
+    public GameObject[] PrefabKinds;
     public float TileSize = 60f;
     public float MinSpawnCooltime = 1.5f;
     public float MaxSpawnCooltime = 5f;
 
-    private GameObject[][] _prefabs = new GameObject[PrefabKindNum][];
+    private GameObject[][] _prefabs;
     private int _prefabIndex = 0;
-    private int[] _nextSpawnIndex = new int[PrefabKindNum];
+    private int[] _nextSpawnIndex;
     private int _maxPrefabCount = 0;
     private float _spawnCooltime;
     private float _minPrefabSpeed;
 
     private void Awake()
     {
+        //PrefabKinds = new GameObject[PrefabKindNum];
+        _prefabs = new GameObject[PrefabKindNum][];
+        _nextSpawnIndex = new int[PrefabKindNum];
+
+
         _minPrefabSpeed = PrefabKinds[0].GetComponent<MovingObject>().Speed;
 
         SetMaxPrefabCount();
