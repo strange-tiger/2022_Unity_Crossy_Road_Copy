@@ -17,7 +17,6 @@ public class StopObjectSpawner : MonoBehaviour, ISpawner
     private void Awake()
     {
         _count = Random.Range(MinNum, MaxNum);
-        _count = Random.Range(MinNum, MaxNum);
         _tileLengthHalf = (int)((TileLength - Offset) / (2 * _count));
         _position = InitPosition + Offset;
 
